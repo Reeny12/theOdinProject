@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="index.js"></script>
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    function add7(n){
+      return (n + 7);
+    }
+    console.log(add7(4));
+
+    function multiply(n, m){
+      return (n * m);
+    }
+    console.log(multiply(2, 4))
+
+    function capitalize(word){
+      let newWord = word.charAt(0);
+      let slicedWord = word.slice(1);
+      let change = newWord.toUpperCase() + slicedWord;
+      return change;
+    }
+    console.log(capitalize("maureen"));
+
+    function lastLetter(w){
+      let textlength = w.length;
+      letter = w[textlength - 1];
+      return letter;
+    }
+    let w = prompt("Please enter a word: ");
+    console.log(lastLetter(w));
+
+    let answer = parseInt(prompt("Please enter a number for the FizzBuzz game: "));
+    for (let i = 0; i <= answer; i++ ){
+      if(answer % 3 == 0 & answer % 5 == 0) {
+        console.log("FizzBuzz");
+      }
+      else if (answer % 3 == 0){
+        console.log("Fizz");
+      }else if (answer % 5 == 0) {
+        console.log("Buzz");
+      }
+      else{
+        console.log(answer);
+      }
+    }
+  </script>
+
+</body>
+</html>
