@@ -1,3 +1,8 @@
+const rockButton = document.querySelector("#rock");
+const paperbutton = document.querySelector("#paper");
+const scissorButton = document.querySelector("#scissor");
+const results = document.querySelector("#results");
+
 function getComputerChoice(){
     let randomNumber = Math.random() * 10;
     if (randomNumber > 0 && randomNumber <= 3 ){
@@ -14,51 +19,41 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(answer){
+/*function getHumanChoice(answer){
     answer = prompt("Enter Rock, Paper or Scissor as answer: ")
     console.log(answer);
     return answer;
-}
+}*/
 
 
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound(humanChoice, computerChoice){
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
+function playRound(humanChoice){
+    console.log(humanChoice);
+    const computerChoice = getComputerChoice();
 
     if (humanChoice == computerChoice){
-        console.log("It's a tie!!!");
+        results.textContent = `It's a tie! Human: ${humanScore}, Computer: ${computerScore}`;
     }
     else if ((humanChoice == "Rock" && computerChoice == "Scissor") ||
     (humanChoice == "Scissor" && computerChoice == "Paper") ||
     (humanChoice == "Paper" && computerChoice ==  "Rock") ) {
         humanScore += 1;
-        console.log("Yay!! you gained 1 score.");
+        results.textContent = `Yay!! you gained 1 score! Human: ${humanScore}, Computer: ${computerScore}`;
     }
     else if ((computerChoice == "Paper" && humanChoice == "Rock") ||
     (computerChoice == "Rock" && humanChoice == "Scissor") ||
     (computerChoice == "Scissor" && humanChoice == "Paper")){
         computerScore += 1;
-        console.log("You lost 1 score");
+        results.textContent = `You lost 1 score! Human: ${humanScore}, Computer: ${computerScore}`;
     }
     else{
-        console.log("Wrong choice");
-    }
-
-    let scores = `Human: ${humanScore}, Computer: ${computerScore}`;
-    console.log(scores);
-    return scores;
-}
-
-//playRound();
-function playGame(round){
-    round = 0;
-    for (i = 0; i <= 2; i++){
-        round += 1;
-        playRound();
+        results.textContent = "Wrong choice"
     }
 }
 
-playGame();
+
+rockButton.addEventListener("click", () => playRound("Rock"));
+paperbutton.addEventListener("click", () => playRound("Paper"));
+scissorButton.addEventListener("click", () => playRound("Scissor"));
